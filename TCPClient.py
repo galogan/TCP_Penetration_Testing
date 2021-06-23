@@ -1,11 +1,8 @@
 import socket
 
-clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((socket.gethostname(), 1234))
 
-clientsocket.connect((socket.gethostname(), 8888))
+msg = s.recv(1024)
 
-message = clientsocket.recv(1024)
-
-clientsocket.close()
-
-print(message.decode('ascii'))
+print(msg.decode("utf-8"))
