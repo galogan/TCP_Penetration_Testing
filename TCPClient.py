@@ -2,11 +2,7 @@ import socket
 
 clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-host = socket.gethostname()
-
-port = 444
-
-clientsocket.connect(('127.0.0.1', port))
+clientsocket.connect((socket.gethostname(), 8888))
 
 message = clientsocket.recv(1024)
 

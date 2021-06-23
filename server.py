@@ -5,20 +5,17 @@ serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Gets the ip address of the socket. I could have also hardcoded it to host = 192.168.6.210
 
-host = socket.gethostbyname()
-port = 444
-
 # Binding the socket
-serversocket.bind((host, port))
+serversocket.bind((socket.gethostname, 8888))
 
 # Starting TCP listener
-serversocket.listen(3)
+serversocket.listen(5) # 5 means the number of connections in the queue
 
 while True:
     # Accepts information coming in from client
     clientsocket, address = serversocket.accept()
 
-    print("Received connection from " % str(address))
+    print("Received connection from %s " % str(address))
 
     message = 'Thank you for connecting to the server' + "\r\n"
 
